@@ -1,0 +1,25 @@
+fn main() {
+    let name = String::from("Sanju Sabu");
+
+    let updated = first_word(&name);
+
+    println!("{updated}");
+}
+
+fn first_word(sentence: &String) -> String {
+    let mut temp: String = String::new();
+
+    for i in sentence.chars() {
+        if i != ' ' {
+            temp.push(i);
+        } else {
+            if temp.len() <= 0 {
+                return sentence.to_string();
+            } else {
+                return temp.to_string();
+            }
+        }
+    }
+
+    return sentence.to_string();
+}

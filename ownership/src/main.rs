@@ -1,26 +1,18 @@
-use std::any::type_name_of_val;
-
 fn main() {
-    {
-        let whoami = String::from("Sanju Sabu");
 
-        let name: &String = &whoami;
+    let length = length_till_a_white_space(&"Sanju Sabu".to_string());
 
-        println!("{}", type_name_of_val(&name));
+    println!("{length}");
+}
 
-        // dereferenced
-        println!("{}", type_name_of_val(&*name));
+fn length_till_a_white_space(text: &String) -> usize {
+    let bytes = text.as_bytes();
+
+    for (index, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return index;
+        }
     }
 
-    let name: String = String::from("Spongebob SquarePants");
-    let name_copy: &String = &name;
-
-    // Dereferencing here makes it the same type (String, String), if we dont do it; (String, &String)
-    assert_eq!(name, *name_copy);
-
-    // anyway
-    // different types of assert!();
-    // assert!();
-    // assert_eq!();
-    // assert_ne!();
+    return text.len();
 }
